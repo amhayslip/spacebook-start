@@ -1,22 +1,27 @@
 angular.module('spacebook')
   .controller('PostsCtrl', [
-    '$scope', 
-    function($scope){
-      $scope.posts = [];
+    '$scope',
+    'postStorage', 
+    function($scope, postStorage){
+      $scope.posts = postStorage.posts;
 
       $scope.addPost = function (post) {
         var newPost = {
           text: $scope.text,
-          user: $scope.user,
+          user: $scope.user
         }
 
         if (!newPost.text) {
           return;
         }
 
-        $scope.posts.push(newPost);
+        postStorage.insertPost(newPost);
 
         $scope.text = '';
         $scope.user = '';
+      };
+
+      $scope.removePost = function (post) {
+        postStorage.delete(post);
       };
   }])
