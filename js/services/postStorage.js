@@ -23,6 +23,12 @@ angular.module('spacebook')
         store._saveToLocalStorage(store.posts);
       },
 
+      insertComment: function (comment, postId) {
+        store.posts[postId].comments.push(comment);
+
+        store._saveToLocalStorage(store.posts);
+      },
+
       delete: function (post) {
         store.posts.splice(store.posts.indexOf(post), 1);
 

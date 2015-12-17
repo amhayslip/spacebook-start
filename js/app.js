@@ -1,6 +1,6 @@
 angular.module('spacebook', ['ngRoute', 'ngResource'])
   .config(function ($routeProvider) {
-    var routeConfig = {
+    var homeRouteConfig = {
       controller: 'PostsCtrl',
       templateUrl: 'index.html',
       resolve: {
@@ -11,9 +11,20 @@ angular.module('spacebook', ['ngRoute', 'ngResource'])
       }
     };
 
+    var postRouteConfig = {
+      controller: 'CommentsCtrl',
+      templateUrl: 'comments.html',
+      resolve: {
+        store: function (postStorage) {
+          postStorage.get();
+          return postStorage;
+        }
+      }
+    };
+
     $routeProvider
-      .when('/', routeConfig)
-      .when('/:status', routeConfig)
+      .when('/', homeRouteConfig)
+      .when('/posts/:id', postRouteConfig)
       .otherwise({
         redirectTo: '/'
       });

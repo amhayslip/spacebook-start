@@ -8,7 +8,8 @@ angular.module('spacebook')
       $scope.addPost = function (post) {
         var newPost = {
           text: $scope.text,
-          user: $scope.user
+          user: $scope.user,
+          comments: []
         }
 
         if (!newPost.text) {
