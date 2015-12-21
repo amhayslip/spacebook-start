@@ -1,5 +1,5 @@
 angular.module('spacebook')
-  .factory('postStorage', function () {
+  .factory('postStorage', ['$http', function ($http) {
     var STORAGE_ID = 'spacebook';
 
     var store = {
@@ -16,6 +16,14 @@ angular.module('spacebook')
       get: function () {
         return angular.copy(store._getFromLocalStorage(), store.posts);
       },
+
+      // createPost: function (post) {
+      //   return $http.post('/posts', post, {
+
+      //   }).success(function(data){
+      //     posts.push(data);
+      //   });
+      // },
 
       insertPost: function (post) {
         store.posts.push(post);
@@ -37,4 +45,4 @@ angular.module('spacebook')
     };
 
     return store;
-  });
+  }]);

@@ -18,6 +18,8 @@ angular.module('spacebook')
 
         postStorage.insertPost(newPost);
 
+        // postStorage.createPost(post);
+
         $scope.text = '';
         $scope.user = '';
       };
