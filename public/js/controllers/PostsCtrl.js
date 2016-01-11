@@ -16,9 +16,9 @@ angular.module('spacebook')
           return;
         }
 
-        postStorage.insertPost(newPost);
+        // postStorage.insertPost(newPost);
 
-        // postStorage.createPost(post);
+        postStorage.createPost(newPost);
 
         $scope.text = '';
         $scope.user = '';

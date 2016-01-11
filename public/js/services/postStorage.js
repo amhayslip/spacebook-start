@@ -17,19 +17,18 @@ angular.module('spacebook')
         return angular.copy(store._getFromLocalStorage(), store.posts);
       },
 
-      // createPost: function (post) {
-      //   return $http.post('/posts', post, {
-
-      //   }).success(function(data){
-      //     posts.push(data);
-      //   });
-      // },
-
-      insertPost: function (post) {
-        store.posts.push(post);
-
-        store._saveToLocalStorage(store.posts);
+      createPost: function (post) {
+        return $http.post('/posts', post)
+        .success(function(data){
+          store.posts.push(data);
+        });
       },
+
+      // insertPost: function (post) {
+      //   store.posts.push(post);
+
+      //   store._saveToLocalStorage(store.posts);
+      // },
 
       insertComment: function (comment, postId) {
         store.posts[postId].comments.push(comment);
